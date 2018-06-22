@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+button, input {
+  margin: 1pt !important;
+}
+
+.my-app {
+  display: inline-block;
+}
+.my-app-badge {
+  padding: 0.8em;
+  line-height: 0.8em;
+  margin-right: 0.8em;
+}

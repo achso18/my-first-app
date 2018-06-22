@@ -1,0 +1,21 @@
+{
+  "name": "crud-backend",
+  "version": "1.0.0",
+  "description": "simple backend for user administration",
+  "main": "entry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "A.Geisler",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.1.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "knex": "^0.14.6",
+    "mysql": "^2.15.0",
+    "popper.js": "^1.14.3"
+  }
+}

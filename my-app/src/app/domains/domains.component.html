@@ -1,0 +1,31 @@
+<app-accounts-user [domainList]="domainList"></app-accounts-user>
+<div class="card bg-light mb-4">
+  <div class="card-header">
+    <h2 class="card-title">Liste der Domänen</h2>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let domain of domainList; index as i">
+      <div class="my-app my-app-badge bg-secondary text-white">{{i+1}}</div>
+      <div class="my-app">{{domain.domain}}</div>
+      <div class="my-app float-right">
+        <button type="button" name="button" class="btn btn-danger btn-sm" (click)="deleteDomain(domain.domain)">Löschen</button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="card bg-light mb-3">
+  <div class="card-header">
+    <h4 class="card-title">Domäne hinzufügen</h4>
+  </div>
+  <div class="card-body">
+    <form class="form" #frm="ngForm" (ngSubmit)="addDomain(frm)">
+      <div class="form-group">
+        <input type="text" class="form-control" name="domain" placeholder="Domäne Bsp.: example.com" ngModel required>
+      </div>
+      <div class="form-group float-right">
+        <button type="submit" name="button" class="btn btn-success btn-sm" [disabled]=frm.invalid>Domäne speichern</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="card bg-light mb-4">
+  <div class="card-header">
+    <h2 class="card-title">Liste der Benutzer</h2>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let user of userList; index as i">
+      <div class="my-app my-app-badge bg-secondary text-white">{{i+1}}</div>
+      <div class="my-app">{{user.username}}@{{user.domain}}</div>
+      <div class="my-app float-right">
+        <button type="button" name="button" class="btn btn-primary btn-sm" (click)="showChgPwForm(user)" [disabled]="toogleForm">Passwort ändern</button>
+        <button type="button" name="button" class="btn btn-danger btn-sm" (click)="deleteUser(user.username)" [disabled]="toogleForm">Löschen</button>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="card bg-light mb-3" *ngIf="!toogleForm">
+  <div class="card-header">
+    <h4 class="card-title">Benutzer erstellen</h4>
+  </div>
+  <div class="card-body">
+    <form class="form-inline" #frm="ngForm" (ngSubmit)="addUser(frm)">
+      <div class="form-group">
+        <input type="text" class="form-control" name="username" placeholder="Name" ngModel required>
+        <span>@</span>
+        <select class="form-control mr-3" name="domain" ngModel required>
+          <option value="" disabled selected>Domäne wählen</option>
+          <option *ngFor="let domain of domains" [ngValue]="domain.domain">{{domain.domain}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" placeholder="Passwort" ngModel required>
+        <button type="submit" name="button" class="btn btn-success btn-sm" [disabled]=frm.invalid>Benutzer speichern</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card bg-secondary text-white mx-5" *ngIf="toogleForm">
+  <div class="card-header">
+    <h5>Passwort ändern für Benutzer: {{selectedUser.username}}@{{selectedUser.domain}}</h5>
+  </div>
+  <div class="card-body">
+    <form class="form-horizontal" #chgPwFrm="ngForm" (ngSubmit)="chgPwd(chgPwFrm)">
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" placeholder="Neues Passwort" ngModel required>
+      </div>
+      <div class="form-group float-right">
+        <button type="submit" name="button" class="btn btn-primary btn-sm" [disabled]=chgPwFrm.invalid>Speichern</button>
+        <button type="button" name="button" class="btn btn-danger btn-sm" (click)="toogleFormSwitch()">Abbrechen</button>
+      </div>
+    </form>
+  </div>
+
+</div>
